@@ -33,8 +33,7 @@ return packer.startup(function(use)
 
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
-	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
-	use("anoopar112/deus-colorscheme")
+	use("anoopar112/deus-colorscheme") -- current colorscheme. can change in core/colorscheme
 
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
@@ -47,6 +46,7 @@ return packer.startup(function(use)
 	-- commenting with gc
 	use("numToStr/Comment.nvim")
 
+	-- show keycombinations like spacemacs
 	use("folke/which-key.nvim")
 	use("folke/todo-comments.nvim")
 
@@ -60,8 +60,6 @@ return packer.startup(function(use)
 	use("nvim-lualine/lualine.nvim")
 	-- use({ "romgrk/barbar.nvim", wants = "nvim-web-devicons" })
 	use("nanozuki/tabby.nvim")
-
-	-- use("kdheepak/tabline.nvim")
 
 	-- fuzzy finding w/ telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
