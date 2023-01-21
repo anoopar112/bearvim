@@ -3,7 +3,7 @@
 BEARSHOME=$HOME/.bearvim
 NVIMCONFIG=$HOME/.config/nvim
 
-if[[ -d $BEARSHOME ]];then
+if [[ -d $BEARSHOME ]];then
 	echo "Existing Bearvim installation found."
 	echo "Move it or delete it and try again."
 	return 0
