@@ -6,7 +6,7 @@ NVIMCONFIG=$HOME/.config/nvim
 if [[ -d $BEARSHOME ]]; then
 	echo "Existing Bearvim installation found."
 	echo "Move it or delete it and try again."
-	return 0
+	exit
 fi
 mkdir $BEARSHOME &&
 cd $BEARSHOME &&
@@ -22,9 +22,7 @@ if [[ -d $NVIMCONFIG ]]; then
 	echo "Successfully installed Bearvim."
 else
 	echo "No Neovim config folder found."
-	echo "Trying to create a new config folder."
-	mkdir -p $NVIMCONFIG
-	echo "New Neovim config folder created"
+	echo "Installing Bearvim"
 	ln -s $BEARSHOME $NVIMCONFIG
 	echo "Successfully installed Bearvim."
 fi
