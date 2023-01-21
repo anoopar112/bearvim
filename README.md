@@ -17,4 +17,4 @@ with vanilla vim._
 
 Prerequisites `git`, `neovim > 0.7`
 
-`curl -sLf https://github.com/anoopar112/bearvim/install.sh | bash`
+`curl -sLf https://raw.githubusercontent.com/anoopar112/bearvim/master/install.sh | bash`
