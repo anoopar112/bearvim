@@ -6,6 +6,7 @@ require("bearvim.core.colorscheme")
 require("bearvim.plugins.general")
 -- plugins comment here to disable plugins.
 require("bearvim.plugins.indentblankline")
+require("bearvim.plugins.autopairs")
 require("bearvim.plugins.lualine")
 require("bearvim.plugins.nvim-cmp")
 require("bearvim.plugins.nvimtree")
