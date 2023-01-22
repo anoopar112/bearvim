@@ -67,19 +67,19 @@ In the subsequent runs it will install the lsp plugins.
 Bearvim uses packer to install all the plugins.  
 All the plugins are in the plugins-setup page.  
 You can add the plugins in the same page using packer.
-For more info refer packer documentation (here)[https://github.com/wbthomason/packer.nvim]
+For more info refer packer documentation [here](https://github.com/wbthomason/packer.nvim)
 
-# Keybindins
+# Keybindings
 
 This is the most opinianated section for this repository. But it is very easy to change also.
 
-The leader key is mapped to `space bar`.
+The leader key is mapped to `space`.
 
 ## Moving between splits.
 
-`space w j` move down the split.
-`space w k` move up the split.
-`space w h` move right the split.
+`space w j` move down the split.  
+`space w k` move up the split.  
+`space w h` move right the split.  
 `space w l` move left the split.
 
 - pressing `jj` will get you out of the insert mode.
@@ -89,13 +89,13 @@ The leader key is mapped to `space bar`.
 
 ### Telescope specific bindings.
 
-`space pp` - search for files in the project.
-`space ll` - search for words in the project(live grep).
-`space gg` - search for the word selected.
+`space pp` - search for files in the project.  
+`space ll` - search for words in the project(live grep).  
+`space gg` - search for the word selected.  
 `space bb` - search the open buffers.
 
-`space wq` - Save the current files and quit.
-`space wc` - Quit the file without saving.
+`space wq` - Save the current files and quit.  
+`space wc` - Quit the file without saving.  
 `space bd` - Quit the current buffer.
 
 `space nh` - clear the current highlight.
