@@ -3,6 +3,7 @@ require("bearvim.plugins-setup")
 require("bearvim.core.options")
 require("bearvim.core.keymaps")
 require("bearvim.core.colorscheme")
+require("bearvim.core.dashboard")
 require("bearvim.plugins.general")
 -- plugins comment here to disable plugins.
 require("bearvim.plugins.indentblankline")

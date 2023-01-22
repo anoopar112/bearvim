@@ -7,4 +7,5 @@ if not indent_blankline_setup then
 end
 indent_blankline.setup({
 	show_end_of_line = false,
+	filetype_exclude = { "dashboard" },
 })

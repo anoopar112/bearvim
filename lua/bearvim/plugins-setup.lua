@@ -33,6 +33,8 @@ return packer.startup(function(use)
 
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
+	use("glepnir/dashboard-nvim") -- for the startup dashboard
+
 	use("anoopar112/deus-colorscheme") -- current colorscheme. can change in core/colorscheme
 
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
@@ -58,7 +60,6 @@ return packer.startup(function(use)
 
 	-- statusline
 	use("nvim-lualine/lualine.nvim")
-	-- use({ "romgrk/barbar.nvim", wants = "nvim-web-devicons" })
 	use("nanozuki/tabby.nvim")
 
 	-- fuzzy finding w/ telescope
