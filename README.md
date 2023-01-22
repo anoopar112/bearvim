@@ -69,23 +69,24 @@ All the plugins are in the plugins-setup page.
 You can add the plugins in the same page using packer.
 For more info refer packer documentation [here](https://github.com/wbthomason/packer.nvim)
 
-# Keybindings
+## Keybindings
 
 This is the most opinianated section for this repository. But it is very easy to change also.
 
 The leader key is mapped to `space`.
 
-## Moving between splits.
+### Moving between splits.
 
 `space w j` move down the split.  
 `space w k` move up the split.  
 `space w h` move right the split.  
 `space w l` move left the split.
 
-- pressing `jj` will get you out of the insert mode.
-- pressigng `space jj` will save the file.
+### Other bindings.
 
-- `space ff` will open the file tree.
+pressing `jj` will get you out of the insert mode.  
+pressigng `space jj` will save the file.  
+`space ff` will open the file tree.
 
 ### Telescope specific bindings.
 
