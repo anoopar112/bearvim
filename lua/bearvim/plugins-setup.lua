@@ -33,7 +33,7 @@ return packer.startup(function(use)
 
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
-	use("glepnir/dashboard-nvim") -- for the startup dashboard
+	use("mhinz/vim-startify") -- for the startup dashboard
 
 	use("anoopar112/deus-colorscheme") -- current colorscheme. can change in core/colorscheme
 
@@ -44,6 +44,8 @@ return packer.startup(function(use)
 	-- essential plugins
 	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
 	use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
+
+	use("Shatur/neovim-session-manager")
 
 	-- commenting with gc
 	use("numToStr/Comment.nvim")

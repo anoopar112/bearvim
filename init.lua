@@ -18,6 +18,7 @@ require("bearvim.plugins.comment")
 require("bearvim.plugins.gitsigns")
 require("bearvim.plugins.vimwiki")
 require("bearvim.plugins.bookmark")
+require("bearvim.plugins.session-manager")
 -- lsp plugins.
 require("bearvim.plugins.lsp.mason")
 require("bearvim.plugins.lsp.lspsaga")
