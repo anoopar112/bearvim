@@ -1,3 +1,5 @@
+![image logo](logo.png)
+
 # BEARVIM
 
 Bearvim is a bare minimum neovim config to get started on
