@@ -14,33 +14,10 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
 		return str
 	end
 end
--- get lualine nightfly theme
--- local lualine_nightfly = require("lualine.themes.nightfly")
-
--- new colors for theme
-local new_colors = {
-	blue = "#65D1FF",
-	green = "#3EFFDC",
-	violet = "#FF61EF",
-	yellow = "#FFDA7B",
-	black = "#000000",
-}
-
--- change nightlfy theme colors
--- lualine_nightfly.normal.a.bg = new_colors.blue
--- lualine_nightfly.insert.a.bg = new_colors.green
--- lualine_nightfly.visual.a.bg = new_colors.violet
--- lualine_nightfly.command = {
--- 	a = {
--- 		gui = "bold",
--- 		bg = new_colors.yellow,
--- 		fg = new_colors.black, -- black
--- 	},
--- }
 
 lualine.setup({
 	options = {
-		globalstatus = true, -- enable global statusline (have a single statusline
+		globalstatus = false, -- enable global statusline (have a single statusline
 		theme = "everforest",
 	},
 	sections = {
@@ -56,7 +33,7 @@ lualine.setup({
 			{
 				"filename",
 				file_status = true, -- Displays file status (readonly status, modified status)
-				path = 1, -- 0: Just the filename
+				path = 0, -- 0: Just the filename
 				-- 1: Relative path
 				-- 2: Absolute path
 				-- 3: Absolute path, with tilde as the home directory

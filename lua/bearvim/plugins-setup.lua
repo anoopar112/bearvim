@@ -39,11 +39,8 @@ return packer.startup(function(use)
 
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
-	use("szw/vim-maximizer") -- maximizes and restores current window
-
 	-- essential plugins
 	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
-	use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
 
 	use("Shatur/neovim-session-manager")
 
@@ -60,9 +57,10 @@ return packer.startup(function(use)
 	-- vs-code like icons
 	use("nvim-tree/nvim-web-devicons")
 
-	-- statusline
+	-- statusline & tabline
 	use("nvim-lualine/lualine.nvim")
-	use("nanozuki/tabby.nvim")
+	-- using packer.nvim
+	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 
 	-- fuzzy finding w/ telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
@@ -76,7 +74,6 @@ return packer.startup(function(use)
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
-	use("rafamadriz/friendly-snippets") -- useful snippets
 
 	-- managing & installing lsp servers, linters & formatters
 	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
@@ -117,10 +114,17 @@ return packer.startup(function(use)
 	use("vimwiki/vimwiki")
 	use("MattesGroeger/vim-bookmarks")
 	use("kvrohit/tasks.nvim")
-	use("ap/vim-css-color")
+	use("NvChad/nvim-colorizer.lua")
+	use("Pocco81/auto-save.nvim")
 
 	--octodown markdown preview
-	use("skywind3000/asyncrun.vim")
+	use("skywind3000/asyncrun.vim") -- for mac
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	}) -- for linux
 
 	if packer_bootstrap then
 		require("packer").sync()

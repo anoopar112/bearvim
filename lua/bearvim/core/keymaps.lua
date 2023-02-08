@@ -22,7 +22,7 @@ km.set("n", "<leader>gg", "<cmd>Telescope grep_string<cr>") -- find string under
 km.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 km.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 
--- telescope git commands (not on youtube nvim video)
+-- telescope git commands
 km.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
 km.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 km.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
@@ -41,3 +41,6 @@ km.set("n", "<leader>tc", ":CancelTask<CR>")
 km.set("n", "<leader>td", ":UndoTask<CR>")
 
 km.set("n", "<leader>vt", ":put=strftime('%Y%m%d_task')<CR>")
+
+-- lsp saga keybindings
+km.set("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
