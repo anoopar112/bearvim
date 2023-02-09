@@ -8,7 +8,7 @@ I tried many neovim distributions overtime but i always
 came back to my personal configs, mostly because most of the
 neovim distributions are complicated and they seem to make
 everything way overboard.  
-This config aims to bridge the gap. This i a little bit
+This config aims to bridge the gap. This is a little bit
 opinianated but it offers a lot of flexibility in terms of
 adapting it to your own liking.
 
@@ -31,19 +31,23 @@ Prerequisites `git`, `neovim > 0.7`
     └──  bearvim
         ├──  core
         │   ├──  colorscheme.lua
+        │   ├──  dashboard.lua
         │   ├──  keymaps.lua
         │   └──  options.lua
         ├──  plugins
         │   ├──  autopairs.lua
+        │   ├──  autosave.lua
         │   ├──  bookmark.lua
+        │   ├──  bufferline.lua
         │   ├──  comment.lua
         │   ├──  general.lua
         │   ├──  gitsigns.lua
         │   ├──  indentblankline.lua
         │   ├──  lualine.lua
+        │   ├──  markdown-preview.lua
         │   ├──  nvim-cmp.lua
         │   ├──  nvimtree.lua
-        │   ├──  tabby.lua
+        │   ├──  session-manager.lua
         │   ├──  telescope.lua
         │   ├──  treesitter.lua
         │   └──  vimwiki.lua
@@ -68,7 +72,7 @@ In the subsequent runs it will install the lsp plugins.
 
 Bearvim uses packer to install all the plugins.  
 All the plugins are in the plugins-setup page.  
-You can add the plugins in the same page using packer.
+You can add the plugins in the same page using packer.  
 For more info refer packer documentation [here](https://github.com/wbthomason/packer.nvim)
 
 ## Keybindings
@@ -125,27 +129,47 @@ The leader key is mapped to `space`.
   in the neovim ecosystem. If you are not interested in installing bearvim, you
   can always derive inspiration from this list.
 
-  | Name                       | Description                                   | Config             |
-  | -------------------------- | --------------------------------------------- | ------------------ |
-  | [Packer]()                 | The package manager                           | plugins-setup.lua  |
-  | [Plenary]()                | Used for other plugins                        | No config          |
-  | [Vim-startify]()           | Dashboard                                     | core/dashboard.lua |
-  | [Deus-colorscheme]()       | colorscheme                                   |                    |
-  | [vim-tmux-navigator]()     | Tmux enhancements                             |                    |
-  | [vim-surround]()           | adding parantheses and brackets automatically |                    |
-  | [neovim-session-manager]() | Session management                            |                    |
-  | [Comment.nvim]()           | commenting with `gc`                          |                    |
-  | [which-key.nvim]()         | Which key similar to spacemacs                |                    |
-  | [todo-comments.nvim]()     | Nice styling for todo,info,note etc           |                    |
-  | [nvim-tree.lua]()          | File explorer                                 |                    |
-  | [lualine]()                | The statusline plugin                         |                    |
-  | [bufferline]()             | The nice tabs on top                          |                    |
-  | [telescope]()              | The swiss army knife of fuzzy search          |                    |
-  | [telescope-fzf-native]()   | Fzf support for telescope                     |                    |
-  | [nvim-cmp]()               | Autocompletion based on lsp                   |                    |
-  | [cmp-buffer]()             | buffer Autocompletion for nvim-cmp            |                    |
-  | [cmp-path]()               | Filesystem path Autocompletion for nvim-cmp   |                    |
-  | [LuaSnip]()                | Snippet Engine                                |                    |
-  | [cmp_luasnip]()            | Snippet Autocompletion for nvim-cmp           |                    |
-
-  |
+  | Name                                                                                | Description                                         | Config                                                       |
+  | ----------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
+  | [Packer](https://github.com/wbthomason/packer.nvim)                                 | The package manager                                 | [plugins-setup.lua](plugins-setup.lua)                       |
+  | [Plenary](https://github.com/nvim-lua/plenary.nvim)                                 | Used for other plugins                              | -                                                            |
+  | [Vim-startify](https://github.com/mhinz/vim-startify)                               | Dashboard                                           | [core/dashboard.lua](core/dashboard.lua)                     |
+  | [Deus-colorscheme](https://github.com/anoopar112/deus-colorscheme)                  | colorscheme                                         | -                                                            |
+  | [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)             | Tmux enhancements                                   | -                                                            |
+  | [vim-surround](https://github.com/tpope/vim-surround)                               | adding parantheses and brackets automatically       | -                                                            |
+  | [neovim-session-manager](https://github.com/Shatur/neovim-session-manager)          | Session management                                  | [plugins/session-manager.lua](plugins/session-manager.lua)   |
+  | [Comment.nvim](https://github.com/numToStr/Comment.nvim)                            | commenting with `gc`                                | [plugins/comment.lua](plugins/comment.lua)                   |
+  | [which-key.nvim](https://github.com/folke/which-key.nvim)                           | Which key similar to spacemacs                      | [plugins/general.lua](plugins/general.lua)                   |
+  | [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)                   | Nice styling for todo,info,note etc                 | -                                                            |
+  | [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)                         | File explorer                                       | [plugins/nvimtree.lua ](plugins/nvimtree.lua)                |
+  | [nvim-web-icons](https://github.com/nvim-tree/nvim-web-devicons)                    | For the fancy icons                                 | -                                                            |
+  | [lualine](https://github.com/nvim-lualine/lualine.nvim)                             | The statusline plugin                               | [plugins/lualine.lua](plugins/lualine.lua)                   |
+  | [bufferline](https://github.com/akinsho/bufferline.nvim)                            | The nice tabs on top                                | [plugins/bufferline.lua](plugins/bufferline.lua)             |
+  | [telescope](https://github.com/nvim-telescope/telescope.nvim)                       | The swiss army knife of fuzzy search                | [plugins/telescope.lua](plugins/telescope.lua)               |
+  | [telescope-fzf-native](https://github.com/nvim-telescope/telescope-fzf-native.nvim) | Fzf support for telescope                           | -                                                            |
+  | [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)                                     | Autocompletion based on lsp                         | [plugins/nvim-cmp.lua](plugins/nvim-cmp.lua)                 |
+  | [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)                                 | buffer Autocompletion for nvim-cmp                  | -                                                            |
+  | [cmp-path](https://github.com/hrsh7th/cmp-path)                                     | Filesystem path Autocompletion for nvim-cmp         | -                                                            |
+  | [LuaSnip](https://github.com/L3MON4D3/LuaSnip)                                      | Snippet Engine                                      | -                                                            |
+  | [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)                          | Snippet Autocompletion for nvim-cmp                 | -                                                            |
+  | [mason](https://github.com/williamboman/mason.nvim)                                 | install and manage lsp servers                      | [plugins/lsp/mason.lua](plugins/lsp/mason.lua)               |
+  | [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim)             | helper package to mason.                            | -                                                            |
+  | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)                          | Configuring lsp                                     | [plugins/lsp/lspconfig.lua](plugins/lsp/lspconfig.lua)       |
+  | [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)                             | lsp source for nvim-cmp autocompletion              | -                                                            |
+  | [lspsaga](https://github.com/glepnir/lspsaga.nvim)                                  | Enhancements to lsp ui                              | [plugins/lsp/lspsaga.lua](plugins/lsp/lspsaga.lua)           |
+  | [typescript.nvim](https://github.com/jose-elias-alvarez/typescript.nvim)            | Typescript enhancements.                            | -                                                            |
+  | [lspkind.nvim](https://github.com/onsails/lspkind.nvim)                             | Vscode like pictograms                              | -                                                            |
+  | [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)                  | Lsp diagnostics,code actions etc.                   | [plugins/lsp/null-ls.lua](plugins/lsp/null-ls.lua)           |
+  | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)               | Tree sitter support for syntax highlighting/parsing | [plugins/treesitter.lua](plugins/treesitter.lua)             |
+  | [nvim-autopairs](https://github.com/windwp/nvim-autopairs)                          | autopairing/autoclosing support.                    | [plugins/autopairs.lua](plugins/autopairs.lua)               |
+  | [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)                        | autopairing for typescript.                         | -                                                            |
+  | [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)                         | Showing git changes in the sign column.             | [plugins/gitsigns.lua](plugins/gitsigns.lua)                 |
+  | [vim-fugitive](https://github.com/tpope/vim-fugitive)                               | Managing git inside vim.                            | -                                                            |
+  | [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)          | indenting plugin.                                   | [plugins/indentblankline.lua](plugins/indentblankline.lua)   |
+  | [vimwiki](https://github.com/vimwiki/vimwiki)                                       | Vimwiki - Most powerful wiki                        | [plugins/vimwiki.lua](plugins/vimwiki.lua)                   |
+  | [vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks)                     | Bookmark and traverse along the code.               | -                                                            |
+  | [tasks.nvim](https://github.com/kvrohit/tasks.nvim)                                 | Simple task management plugin                       | -                                                            |
+  | [nvim-colorizer](https://github.com/NvChad/nvim-colorizer.lua)                      | highlight colors                                    | [plugins/general.lua](plugins/general.lua)                   |
+  | [auto-save.nvim](https://github.com/Pocco81/auto-save.nvim)                         | Auto save plugin                                    | -                                                            |
+  | [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim)                         | For running octodown(mac) markdown previewer.       | -                                                            |
+  | [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)            | Plugin for markdown-preview                         | [plugins/markdown-preview.lua](plugins/markdown-preview.lua) |
