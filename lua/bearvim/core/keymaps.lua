@@ -28,17 +28,25 @@ km.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commit
 km.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 km.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
+-- buffer and tab management
 km.set("n", "<leader>wq", ":wq<CR>")
 km.set("n", "<leader>wc", ":q<CR>")
 km.set("n", "<leader>bd", ":bd<CR>")
+km.set("n", "<leader>tc", ":tabclose<CR>")
+km.set("n", "<leader>bn", ":bn<CR>")
+km.set("n", "<leader>bp", ":bp<CR>")
 
 km.set("n", "<leader>nh", ":noh<CR>")
 -- octodown preview
 km.set("n", "<leader>mp", ":AsyncRun octodown --style=github -l %<CR>")
 -- tasks keybindings
-km.set("n", "<leader>tt", ":ToggleTask<CR>")
-km.set("n", "<leader>tc", ":CancelTask<CR>")
-km.set("n", "<leader>td", ":UndoTask<CR>")
+km.set("n", "<leader>tt", "<Plug>(TasksToggleTask)") -- toggle tasks
+km.set("n", "<leader>tr", "<Plug>(TasksToggleAndClearTask)") -- remove task
+km.set("n", "<leader>td", "<Plug>(TasksCompleteTask)") -- mark as done/complete
+km.set("n", "<leader>tc", "<Plug>(TasksCancelTask)") -- cancel a task.
+km.set("n", "<leader>ts", "<Plug>(TasksSortTasks)") -- sort all tasks.
+km.set("n", "<leader>ta", "<Plug>(TasksArchiveTasks)") -- archive a task.
+km.set("n", "<leader>tb", "<Plug>(TasksBeginTask)") -- mark progress of a task.
 
 km.set("n", "<leader>vt", ":put=strftime('%Y%m%d_task')<CR>")
 

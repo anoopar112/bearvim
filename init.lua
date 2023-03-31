@@ -20,6 +20,7 @@ require("bearvim.plugins.bookmark")
 require("bearvim.plugins.session-manager")
 require("bearvim.plugins.markdown-preview")
 require("bearvim.plugins.autosave")
+require("bearvim.plugins.vimtasks")
 -- lsp plugins.
 require("bearvim.plugins.lsp.mason")
 require("bearvim.plugins.lsp.lspsaga")
