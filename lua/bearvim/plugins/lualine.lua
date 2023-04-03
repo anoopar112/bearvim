@@ -19,6 +19,9 @@ lualine.setup({
 	options = {
 		globalstatus = false, -- enable global statusline (have a single statusline
 		theme = "everforest",
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
+		disabled_filetypes = { "NvimTree" },
 	},
 	sections = {
 		lualine_a = {
