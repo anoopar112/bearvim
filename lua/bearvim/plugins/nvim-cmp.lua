@@ -43,6 +43,7 @@ cmp.setup({
 		{ name = "luasnip" }, -- snippets
 		{ name = "path" }, -- file system paths
 		{ name = "nvim_lsp" }, -- lsp
+		{ name = "tags" },
 	}),
 	-- configure lspkind for vs-code like icons
 	formatting = {

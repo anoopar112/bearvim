@@ -71,6 +71,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-buffer") -- source for text in buffer
 	use("hrsh7th/cmp-path") -- source for file system paths
 	use("hrsh7th/cmp-omni") -- omnifunction source
+	use("quangnguyen30192/cmp-nvim-tags")
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
