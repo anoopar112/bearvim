@@ -127,6 +127,7 @@ return packer.startup(function(use)
 			vim.fn["mkdp#util#install"]()
 		end,
 	}) -- for linux
+	use("lervag/vimtex")
 
 	if packer_bootstrap then
 		require("packer").sync()
