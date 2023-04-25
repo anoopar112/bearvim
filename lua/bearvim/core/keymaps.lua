@@ -50,5 +50,8 @@ km.set("n", "<leader>tb", "<Plug>(TasksBeginTask)") -- mark progress of a task.
 
 km.set("n", "<leader>vt", ":put=strftime('%Y%m%d_task')<CR>")
 
+km.set("n", "<leader>btd", ":.put=strftime('@done(%Y-%m-%d %H:%M:%S)')<CR>kJ")
+km.set("n", "<leader>btp", ":.put=strftime('@wip(%Y-%m-%d %H:%M:%S)')<CR>kJ")
+
 -- lsp saga keybindings
 km.set("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
