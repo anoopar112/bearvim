@@ -55,3 +55,6 @@ km.set("n", "<leader>btp", ":.put=strftime('@wip(%Y-%m-%d %H:%M:%S)')<CR>kJ")
 
 -- lsp saga keybindings
 km.set("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+
+-- Expand snippet
+km.set("i", "<C-j>", "<Plug>luasnip-expand-or-jump")

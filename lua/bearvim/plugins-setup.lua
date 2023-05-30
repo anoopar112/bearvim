@@ -74,7 +74,13 @@ return packer.startup(function(use)
 	use("quangnguyen30192/cmp-nvim-tags")
 
 	-- snippets
-	use("L3MON4D3/LuaSnip") -- snippet engine
+	use({
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!:).
+		run = "make install_jsregexp",
+	})
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
 
 	-- managing & installing lsp servers, linters & formatters
