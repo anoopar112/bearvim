@@ -14,7 +14,6 @@ syntax enable
 let g:vimtex_view_method = 'zathura'
 
 " Or with a generic interface:
-<<<<<<< HEAD
 " let g:vimtex_view_general_viewer = 'okular'
 " let g:vimtex_viewgeneral_options = '--unique file:@pdf\#src:@line@tex'
 
