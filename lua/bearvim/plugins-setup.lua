@@ -134,6 +134,10 @@ return packer.startup(function(use)
 		end,
 	}) -- for linux
 	use("lervag/vimtex")
+	-- project management
+	use({
+		"ahmedkhalf/project.nvim",
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()

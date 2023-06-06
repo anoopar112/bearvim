@@ -30,3 +30,8 @@ opt.fillchars = "fold: "
 opt.foldmethod = "expr"
 opt.foldlevel = 99
 opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.report = 99999
+opt.shortmess = {
+	o = true,
+}
+opt.autoindent = false

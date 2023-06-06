@@ -6,3 +6,4 @@ if not status then
 	return
 end
 -- vim.cmd([[ highlight Normal guibg=None ]])
+vim.api.nvim_set_hl(0, "Comment", { italic = true })

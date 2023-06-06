@@ -39,7 +39,7 @@ cmp.setup({
 	-- sources for autocompletion
 	sources = cmp.config.sources({
 		{ name = "buffer" }, -- text within current buffer
-		{ name = "omni" }, -- omnifunction
+		-- { name = "omni" }, -- omnifunction
 		{ name = "luasnip" }, -- snippets
 		{ name = "path" }, -- file system paths
 		{ name = "nvim_lsp" }, -- lsp

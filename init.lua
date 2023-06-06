@@ -22,6 +22,8 @@ require("bearvim.plugins.markdown-preview")
 require("bearvim.plugins.autosave")
 require("bearvim.plugins.vimtasks")
 require("bearvim.plugins.vimtex")
+require("bearvim.plugins.luasnip")
+require("bearvim.plugins.project")
 -- lsp plugins.
 require("bearvim.plugins.lsp.mason")
 require("bearvim.plugins.lsp.lspsaga")

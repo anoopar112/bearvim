@@ -12,7 +12,7 @@ km.set("n", "<leader>wl", "<C-W><C-L>")
 km.set("n", "<leader>wh", "<C-W><C-H>")
 
 km.set("i", "jj", "<Esc>")
-km.set("n", "<leader>jj", "<Esc>:w<CR>")
+km.set("n", "<leader>jj", "<Esc>:silent! w<CR>")
 
 km.set("n", "<leader>ff", ":NvimTreeFindFileToggle<CR>")
 -- telescope

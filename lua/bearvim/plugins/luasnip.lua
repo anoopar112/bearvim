@@ -3,4 +3,4 @@ if not status then
 	return
 end
 
-luasnip.loaders.from_file("bearsnips.lua")
+require("luasnip.loaders.from_snipmate").lazy_load()
