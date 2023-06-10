@@ -36,7 +36,8 @@ return packer.startup(function(use)
 	use("mhinz/vim-startify") -- for the startup dashboard
 
 	use("anoopar112/deus-colorscheme")
-	use("navarasu/onedark.nvim") -- current colorscheme. can change in core/colorscheme
+	use("navarasu/onedark.nvim")
+	use("EdenEast/nightfox.nvim") -- current colorscheme. can change in core/colorscheme
 
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
