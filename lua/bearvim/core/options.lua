@@ -31,7 +31,10 @@ opt.foldmethod = "expr"
 opt.foldlevel = 99
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.report = 99999
-opt.shortmess = {
-	o = true,
-}
+-- opt.shortmess = { --FIX: this is not working as of now.
+-- 	o = true,
+-- }
 opt.autoindent = false
+vim.cmd([[
+set shortmess+=F "FIX:temporary fix for the above issue
+]])
