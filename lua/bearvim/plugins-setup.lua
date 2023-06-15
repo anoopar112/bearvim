@@ -123,7 +123,7 @@ return packer.startup(function(use)
 	-- vimwiki
 	use("vimwiki/vimwiki")
 	use("MattesGroeger/vim-bookmarks")
-	use("CrispyDrone/vim-tasks")
+	use("anoopar112/vim-tasks")
 	use("NvChad/nvim-colorizer.lua")
 	use("Pocco81/auto-save.nvim")
 

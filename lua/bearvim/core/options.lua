@@ -25,16 +25,21 @@ opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
 
 opt.iskeyword:append("-") -- consider string-string as whole word
-opt.cmdheight = 0
+-- opt.cmdheight = 0
 opt.fillchars = "fold: "
 opt.foldmethod = "expr"
 opt.foldlevel = 99
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.report = 99999
 -- opt.shortmess = { --FIX: this is not working as of now.
--- 	o = true,
+-- 	F = true,
+-- 	W = true,
+-- 	A = true,
+-- 	I = true,
+-- 	c = true,
+-- 	S = true,
 -- }
 opt.autoindent = false
 vim.cmd([[
-set shortmess+=F "FIX:temporary fix for the above issue
+set shortmess+=FAIcSW
 ]])
