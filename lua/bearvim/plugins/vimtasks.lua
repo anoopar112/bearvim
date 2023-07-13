@@ -1,5 +1,5 @@
 -- vimtasks configuration
 vim.cmd([[
 let g:TasksDateFormat = '%Y-%m-%d %H:%M'
-autocmd BufNewFile,BufReadPost *.tasks.md set filetype=tasks
+autocmd BufNewFile,BufReadPost todo.md,doing.md,done.md set filetype=tasks
 ]])
