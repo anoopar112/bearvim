@@ -47,6 +47,8 @@ lualine.setup({
 		},
 		lualine_x = {
 			{ "filetype" },
+			{ "diff" },
 		},
+		lualine_y = { "branch", "progress" },
 	},
 })
