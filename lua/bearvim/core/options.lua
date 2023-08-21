@@ -43,3 +43,5 @@ opt.autoindent = false
 vim.cmd([[
 set shortmess+=FAIcSW
 ]])
+-- set the cursor to line/beam in all modes
+opt.guicursor = { "a:ver25" }
