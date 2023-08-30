@@ -60,12 +60,21 @@ lspconfig["html"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
-
+local augroup = vim.api.nvim_create_augroup("TypescriptAutoImport", {})
 -- configure typescript server with plugin
 typescript.setup({
+	go_to_source_definition = {
+		fallback = true, -- fall back to standard LSP definition on failure
+	},
 	server = {
 		capabilities = capabilities,
-		on_attach = on_attach,
+		on_attach = function(client, bufnr)
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = augroup,
+				buffer = bufnr,
+				command = "TypescriptAddMissingImports",
+			})
+		end,
 	},
 })
 
