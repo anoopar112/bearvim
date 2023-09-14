@@ -74,7 +74,7 @@ let g:mkdp_preview_options = {
     \ 'sequence_diagrams': {},
     \ 'flowchart_diagrams': {},
     \ 'content_editable': v:false,
-    \ 'disable_filename': 0,
+    \ 'disable_filename': 1,
     \ 'toc': {}
     \ }
 
