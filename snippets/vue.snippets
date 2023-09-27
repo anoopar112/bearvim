@@ -1,5 +1,6 @@
 extends html
 extends tailwind
+extends javascript
 
 snippet vinit
 	<template>
@@ -16,3 +17,9 @@ snippet script
 	<script setup lang="ts">
 	${1}
 	</script>
+
+snippet icomp
+	import ${1} from '@/components/${2}'
+
+snippet ilib
+	import { ${1} } from '@/${2}'
