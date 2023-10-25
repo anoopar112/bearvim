@@ -10,6 +10,7 @@ km.set("n", "<leader>wj", "<C-W><C-J>")
 km.set("n", "<leader>wk", "<C-W><C-K>")
 km.set("n", "<leader>wl", "<C-W><C-L>")
 km.set("n", "<leader>wh", "<C-W><C-H>")
+km.set("n", "<leader>w=", "<C-W><C-=>")
 
 km.set("i", "jj", "<Esc>")
 km.set("n", "<leader>jj", "<Esc>:silent! w<CR>")
