@@ -59,3 +59,9 @@ km.set("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
 
 -- Expand snippet
 km.set("i", "<C-j>", "<Plug>luasnip-expand-or-jump")
+
+km.set(
+	"n",
+	"#",
+	":let save_cursor=getcurpos()|let @/ = expand('<cword>')|set hlsearch<CR>w?<CR>:%s///gn<CR>:call setpos('.', save_cursor)<CR>"
+)

@@ -7,4 +7,5 @@ if not indent_blankline_setup then
 end
 indent_blankline.setup({
 	exclude = { filetypes = { "startify" } },
+	scope = { enabled = false },
 })
