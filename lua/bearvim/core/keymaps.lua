@@ -65,3 +65,5 @@ km.set(
 	"#",
 	":let save_cursor=getcurpos()|let @/ = expand('<cword>')|set hlsearch<CR>w?<CR>:%s///gn<CR>:call setpos('.', save_cursor)<CR>"
 )
+
+km.set("n", "J", "J0")
