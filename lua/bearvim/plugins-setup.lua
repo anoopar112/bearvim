@@ -10,10 +10,10 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	"nvim-lua/plenary.nvim", -- lua functions that many plugins
 	"mhinz/vim-startify", -- for the startup dashboard
-	-- ("anoopar112/deus-colorscheme",
+	"anoopar112/deus-colorscheme",
 	-- ("navarasu/onedark.nvim",
-	-- ("EdenEast/nightfox.nvim", -- current colorscheme. can change in core/colorscheme
-	{ "catppuccin/nvim", as = "catppuccin" },
+	"EdenEast/nightfox.nvim", -- current colorscheme. can change in core/colorscheme
+	-- { "catppuccin/nvim", as = "catppuccin" },
 	"christoomey/vim-tmux-navigator", -- tmux & split window navigation
 	-- essential plugins
 	"tpope/vim-surround", -- add, delete, change surroundings it's awesome,
@@ -29,8 +29,12 @@ require("lazy").setup({
 	"nvim-tree/nvim-web-devicons",
 	-- statusline & tabline
 	"nvim-lualine/lualine.nvim",
-	-- using packer.nvim
-	{ "akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
+	{
+		"nanozuki/tabby.nvim",
+		event = "VimEnter", -- if you want lazy load, see below
+		dependencies = "nvim-tree/nvim-web-devicons",
+	},
+	-- { "akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
 	-- fuzzy finding w/ telescope
 	{
 		"nvim-telescope/telescope.nvim",
