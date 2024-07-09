@@ -26,7 +26,7 @@ if not status then
 	print("Colorscheme not found!") -- print error if colorscheme not installed
 	return
 end
-vim.cmd([[ highlight Normal guibg=None ]])
+-- vim.cmd([[ highlight Normal guibg=None ]])
 vim.api.nvim_set_hl(0, "Comment", { italic = true })
 -- ==========================================================================
 -- setup for catppuccin theme
