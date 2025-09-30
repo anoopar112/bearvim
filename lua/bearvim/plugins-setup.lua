@@ -13,7 +13,7 @@ require("lazy").setup({
 	"anoopar112/deus-colorscheme",
 	-- ("navarasu/onedark.nvim",
 	"EdenEast/nightfox.nvim", -- current colorscheme. can change in core/colorscheme
-	-- { "catppuccin/nvim", as = "catppuccin" },
+	{ "catppuccin/nvim", as = "catppuccin" },
 	"christoomey/vim-tmux-navigator", -- tmux & split window navigation
 	-- essential plugins
 	"tpope/vim-surround", -- add, delete, change surroundings it's awesome,
@@ -140,6 +140,13 @@ require("lazy").setup({
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = { "OXY2DEV/markview.nvim" },
+		lazy = false,
+
+		-- ... All other options.
 	},
 	{ -- Autoformat
 		"stevearc/conform.nvim",
