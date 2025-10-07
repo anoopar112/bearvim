@@ -8,51 +8,11 @@ end
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- OR setup with some options
-nvimtree.setup({
-	sort_by = "case_sensitive",
-	sync_root_with_cwd = true,
-	respect_buf_cwd = true,
-	update_focused_file = {
-		enable = true,
-		update_root = true,
-	},
-	view = {
-		adaptive_size = false,
-		width = 30,
-	},
-	renderer = {
-		group_empty = true,
-	},
-	filters = {
-		dotfiles = true,
-	},
-})
-
---
--- This function has been generated from your
---   view.mappings.list
---   view.mappings.custom_only
---   remove_keymaps
---
--- You should add this function to your configuration and set on_attach = on_attach in the nvim-tree setup call.
---
--- Although care was taken to ensure correctness and completeness, your review is required.
---
--- Please check for the following issues in auto generated content:
---   "Mappings removed" is as you expect
---   "Mappings migrated" are correct
---
--- Please see https://github.com/nvim-tree/nvim-tree.lua/wiki/Migrating-To-on_attach for assistance in migrating.
---
-
 local function on_attach(bufnr)
 	local api = require("nvim-tree.api")
-
 	local function opts(desc)
 		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
 	end
-
 	-- Default mappings. Feel free to modify or remove as you wish.
 	--
 	-- BEGIN_DEFAULT_ON_ATTACH
@@ -61,8 +21,8 @@ local function on_attach(bufnr)
 	vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))
 	vim.keymap.set("n", "<C-r>", api.fs.rename_sub, opts("Rename: Omit Filename"))
 	vim.keymap.set("n", "<C-t>", api.node.open.tab, opts("Open: New Tab"))
-	vim.keymap.set("n", "<C-v>", api.node.open.vertical, opts("Open: Vertical Split"))
-	vim.keymap.set("n", "<C-x>", api.node.open.horizontal, opts("Open: Horizontal Split"))
+	vim.keymap.set("n", "v", api.node.open.vertical, opts("Open: Vertical Split"))
+	vim.keymap.set("n", "s", api.node.open.horizontal, opts("Open: Horizontal Split"))
 	vim.keymap.set("n", "<BS>", api.node.navigate.parent_close, opts("Close Directory"))
 	vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
 	vim.keymap.set("n", "<Tab>", api.node.open.preview, opts("Open Preview"))
@@ -99,7 +59,7 @@ local function on_attach(bufnr)
 	vim.keymap.set("n", "q", api.tree.close, opts("Close"))
 	vim.keymap.set("n", "r", api.fs.rename, opts("Rename"))
 	vim.keymap.set("n", "R", api.tree.reload, opts("Refresh"))
-	vim.keymap.set("n", "s", api.node.run.system, opts("Run System"))
+	-- vim.keymap.set("n", "s", api.node.run.system, opts("Run System"))
 	vim.keymap.set("n", "S", api.tree.search_node, opts("Search"))
 	vim.keymap.set("n", "U", api.tree.toggle_custom_filter, opts("Toggle Hidden"))
 	vim.keymap.set("n", "W", api.tree.collapse_all, opts("Collapse"))
@@ -115,3 +75,24 @@ local function on_attach(bufnr)
 	-- You will need to insert "your code goes here" for any mappings with a custom action_cb
 	vim.keymap.set("n", "u", api.tree.change_root_to_parent, opts("Up"))
 end
+-- OR setup with some options
+nvimtree.setup({
+	sort_by = "case_sensitive",
+	sync_root_with_cwd = true,
+	respect_buf_cwd = true,
+	update_focused_file = {
+		enable = true,
+		update_root = true,
+	},
+	view = {
+		adaptive_size = false,
+		width = 30,
+	},
+	renderer = {
+		group_empty = true,
+	},
+	filters = {
+		dotfiles = true,
+	},
+	on_attach = on_attach,
+})

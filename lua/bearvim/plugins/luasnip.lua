@@ -3,4 +3,4 @@ if not status then
 	return
 end
 
-require("luasnip.loaders.from_snipmate").lazy_load()
+require("luasnip.loaders.from_snipmate").load({ path = "./snippets" })

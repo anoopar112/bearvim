@@ -115,7 +115,7 @@ require("lazy").setup({
 	"lukas-reineke/indent-blankline.nvim",
 	-- vimwiki
 	"vimwiki/vimwiki",
-	"MattesGroeger/vim-bookmarks",
+	"tomasky/bookmarks.nvim",
 	"anoopar112/vim-tasks",
 	"NvChad/nvim-colorizer.lua",
 	--octodown markdown preview
@@ -180,13 +180,13 @@ require("lazy").setup({
 				--
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
-				vue = { { "prettierd", "prettier" } },
-				css = { { "prettierd", "prettier" } },
-				html = { { "prettierd", "prettier" } },
-				yaml = { { "prettierd", "prettier" } },
-				json = { { "prettierd", "prettier" } },
+				javascript = { "prettierd", "prettier" },
+				typescript = { "prettierd", "prettier" },
+				vue = { "prettierd", "prettier" },
+				css = { "prettierd", "prettier" },
+				html = { "prettierd", "prettier" },
+				yaml = { "prettierd", "prettier" },
+				json = { "prettierd", "prettier" },
 			},
 			-- If this is set, Conform will run the formatter asynchronously after save.
 			-- It will pass the table to conform.format().
@@ -299,10 +299,9 @@ require("lazy").setup({
 					--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
 				}),
 				sources = {
+					{ name = "luasnip", priority = 10 },
 					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
 					{ name = "path" },
-					{ name = "luasnip" },
 					{ name = "path" },
 					{
 						name = "buffer",
@@ -313,10 +312,8 @@ require("lazy").setup({
 							end,
 						},
 					},
-					{ name = "nvim_lsp", priority = 9 },
 					{ name = "tags", priority = 8 },
 					{ name = "treesitter", priority = 7 },
-					{ name = "luasnip", priority = 6 },
 					{ name = "path" },
 					{
 						name = "omni",
