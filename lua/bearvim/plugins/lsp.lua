@@ -109,22 +109,18 @@ capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp"
 --  - settings (table): Override the default settings passed when initializing the server.
 --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 local servers = {
-	-- clangd = {},
 	cssls = {},
 	tailwindcss = {},
 	pyright = {},
 	emmet_ls = {},
-	-- gopls = {},
-	-- pyright = {},
-	-- rust_analyzer = {},
-	-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-	--
-	-- Some languages (like typescript) have entire language plugins that can be useful:
-	--    https://github.com/pmizio/typescript-tools.nvim
-	--
-	-- But for many setups, the LSP (`tsserver`) will work just fine
-	-- tsserver = {},
-	--
+	vue_ls = {
+		init_options = {
+			vue = {
+				hybridMode = false,
+			},
+		},
+	},
+	ts_ls = {},
 
 	lua_ls = {
 		-- cmd = {...},
@@ -141,7 +137,6 @@ local servers = {
 		},
 	},
 }
-
 -- Ensure the servers and tools above are installed
 --  To check the current status of installed tools and/or manually install
 --  other tools, you can run
@@ -165,18 +160,81 @@ vim.list_extend(ensure_installed, {
 	"stylua", -- lua formatter
 	"eslint_d", -- ts/js linter
 	"black",
+	"vue_ls",
 })
 require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 require("mason-lspconfig").setup({
 	handlers = {
+		-- 1. The default handler for all normal servers (css, html, etc.)
 		function(server_name)
 			local server = servers[server_name] or {}
-			-- This handles overriding only values explicitly passed
-			-- by the server configuration above. Useful when disabling
-			-- certain features of an LSP (for example, turning off formatting for tsserver)
 			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 			require("lspconfig")[server_name].setup(server)
 		end,
+
+		-- 2. EXPLICIT override for vue_ls (forces hybrid mode OFF)
+		["vue_ls"] = function()
+			require("lspconfig").vue_ls.setup({
+				capabilities = capabilities,
+				init_options = {
+					vue = {
+						hybridMode = false,
+					},
+				},
+			})
+		end,
+
+		-- 3. EXPLICIT override for ts_ls (forces Vue filetype support)
+		["ts_ls"] = function()
+			require("lspconfig").ts_ls.setup({
+				capabilities = capabilities,
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"vue", -- This is the crucial part that was being ignored
+				},
+				init_options = {
+					plugins = {
+						{
+							name = "@vue/typescript-plugin",
+							location = vim.fn.stdpath("data")
+								.. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+							languages = { "vue" },
+						},
+					},
+				},
+			})
+		end,
 	},
 })
+-- =========================================================================
+-- FORCE VUE & TYPESCRIPT CONFIGURATION (Neovim 0.11+ Native API)
+-- =========================================================================
+
+local vue_language_server_path = vim.fn.stdpath("data")
+	.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+-- 1. Force ts_ls to load the Vue plugin and attach to Vue files
+vim.lsp.config("ts_ls", {
+	capabilities = capabilities,
+	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+	init_options = {
+		plugins = {
+			{
+				name = "@vue/typescript-plugin",
+				location = vue_language_server_path,
+				languages = { "vue" },
+			},
+		},
+	},
+})
+vim.lsp.enable("ts_ls")
+
+-- 2. Force vue_ls to run normally
+vim.lsp.config("vue_ls", {
+	capabilities = capabilities,
+})
+vim.lsp.enable("vue_ls")

@@ -25,14 +25,14 @@ local builtin = require("telescope.builtin")
 
 km.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 km.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-km.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+km.set("n", "<leader><leader>", builtin.find_files, { desc = "[S]earch [F]iles" })
 km.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 km.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 km.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 km.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 km.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 km.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-km.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+km.set("n", "<leader>bb", builtin.buffers, { desc = "[ ] Find existing buffers" })
 km.set("n", "<leader>sb", ":Telescope bookmarks list<CR>", { desc = "[ ] Find existing bookmarks" })
 
 -- Slightly advanced example of overriding default behavior and theme

@@ -1,12 +1,3 @@
-require("nvim-treesitter.configs").setup({
-	ensure_installed = {},
-	sync_install = false,
-	highlight = {
-		enable = true,
-		disable = { "c", "rust" },
-		additional_vim_regex_highlighting = false,
-	},
-})
 -- import nvim-treesitter plugin safely
 local status, treesitter = pcall(require, "nvim-treesitter.configs")
 if not status then
@@ -15,9 +6,12 @@ end
 
 -- configure treesitter
 treesitter.setup({
+	sync_install = false,
 	-- enable syntax highlighting
 	highlight = {
 		enable = true,
+		disable = { "c", "rust" },
+		additional_vim_regex_highlighting = false,
 	},
 	-- enable indentation
 	indent = { enable = true },
@@ -42,7 +36,6 @@ treesitter.setup({
 		"python",
 		"comment",
 		"scss",
-		"vim",
 	},
 	-- auto install above language parsers
 	auto_install = true,

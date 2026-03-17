@@ -95,7 +95,6 @@ require("lazy").setup({
 	-- configuring lsp servers
 	"hrsh7th/cmp-nvim-lsp", -- for autocompletion
 	{ "glepnir/lspsaga.nvim", branch = "main" }, -- enhanced lsp uis
-	"jose-elias-alvarez/typescript.nvim", -- additional functionality for typescript server e.g. rename file & update imports,
 	"onsails/lspkind.nvim", -- vs-code like icons for autocompletion
 	-- formatting & linting
 	"jose-elias-alvarez/null-ls.nvim", -- configure formatters & linters
@@ -136,18 +135,6 @@ require("lazy").setup({
 		"ahmedkhalf/project.nvim",
 	},
 	"elkowar/yuck.vim",
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		dependencies = { "OXY2DEV/markview.nvim" },
-		lazy = false,
-
-		-- ... All other options.
-	},
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		lazy = false,
