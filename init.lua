@@ -2,6 +2,11 @@
 -- FIX FOR VIM-TASKS / MARKDOWN TREESITTER CRASH
 -- =========================================================================
 vim.treesitter.language.register("markdown", "tasks")
+-- ADD THESE 3 LINES HERE:
+-- Set leader key and vimwiki prefix BEFORE lazy.nvim loads plugins
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+vim.g.vimwiki_map_prefix = "<Leader>v"
 require("bearvim.plugins-setup")
 -- core options
 require("bearvim.core.options")

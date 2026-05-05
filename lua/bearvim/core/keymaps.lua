@@ -1,6 +1,3 @@
--- set leader key to space
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -78,7 +75,7 @@ km.set("n", "<leader>ts", "<Plug>(TasksSortTasks)") -- sort all tasks.
 km.set("n", "<leader>ta", "<Plug>(TasksArchiveTasks)") -- archive a task.
 km.set("n", "<leader>tb", "<Plug>(TasksBeginTask)") -- mark progress of a task.
 
-km.set("n", "<leader>vt", ":put=strftime('%Y%m%d_task')<CR>")
+km.set("n", "<leader>vt", ":put=strftime('# %d.%m.%Y TASKS:')<CR>")
 
 km.set("n", "<leader>btd", ":.put=strftime('@done(%Y-%m-%d %H:%M:%S)')<CR>kJ")
 km.set("n", "<leader>btp", ":.put=strftime('@wip(%Y-%m-%d %H:%M:%S)')<CR>kJ")

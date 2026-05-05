@@ -6,6 +6,8 @@ end
 
 -- Stop Neovim from crashing by mapping the 'tasks' filetype to the 'markdown' parser
 vim.treesitter.language.register("markdown", "tasks")
+-- ADD THIS LINE: Map 'vimwiki' filetype to the 'markdown' parser for Markview
+vim.treesitter.language.register("markdown", "vimwiki")
 -- configure treesitter
 treesitter.setup({
 	sync_install = false,
