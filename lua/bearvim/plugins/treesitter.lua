@@ -4,6 +4,8 @@ if not status then
 	return
 end
 
+-- Stop Neovim from crashing by mapping the 'tasks' filetype to the 'markdown' parser
+vim.treesitter.language.register("markdown", "tasks")
 -- configure treesitter
 treesitter.setup({
 	sync_install = false,

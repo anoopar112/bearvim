@@ -1,3 +1,7 @@
+-- =========================================================================
+-- FIX FOR VIM-TASKS / MARKDOWN TREESITTER CRASH
+-- =========================================================================
+vim.treesitter.language.register("markdown", "tasks")
 require("bearvim.plugins-setup")
 -- core options
 require("bearvim.core.options")

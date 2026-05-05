@@ -312,4 +312,35 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{
+		"milanglacier/minuet-ai.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("minuet").setup({
+				provider = "gemini",
+				-- Send less surrounding code to save your daily token limits
+				context_window = 512,
+				provider_options = {
+					gemini = {
+						model = "gemini-2.5-flash",
+						system = {
+							prompt = "You are a senior developer providing intelligent code completions. Output only the code.",
+						},
+					},
+				},
+				virtualtext = {
+					-- EMPTY this table to disable auto-triggering on every keystroke
+					auto_trigger_ft = {},
+					keymap = {
+						accept = "<A-y>", -- Alt-y to accept suggestion
+						accept_line = "<A-a>", -- Alt-a to accept a single line
+						dismiss = "<A-e>", -- Alt-e to dismiss
+						-- Mapping 'next' acts as your manual trigger when auto-trigger is off
+						next = "<A-i>",
+						prev = "<A-S-i>", -- Optional: Alt + Shift + i to cycle backwards
+					},
+				},
+			})
+		end,
+	},
 })
