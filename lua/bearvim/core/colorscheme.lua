@@ -21,11 +21,11 @@ require("nightfox").setup({
 		},
 	},
 })
-local status, _ = pcall(vim.cmd, "colorscheme terafox")
-if not status then
-	print("Colorscheme not found!") -- print error if colorscheme not installed
-	return
-end
+-- local status, _ = pcall(vim.cmd, "colorscheme nightfox")
+-- if not status then
+-- 	print("Colorscheme not found!") -- print error if colorscheme not installed
+-- 	return
+-- end
 vim.cmd([[ highlight Normal guibg=None ]])
 vim.api.nvim_set_hl(0, "Comment", { italic = true })
 -- -- ==========================================================================
@@ -81,4 +81,4 @@ vim.api.nvim_set_hl(0, "Comment", { italic = true })
 -- --
 -- -- -- setup must be called before loading
 -- vim.cmd.colorscheme("catppuccin")
-vim.cmd.colorscheme("terafox")
+vim.cmd.colorscheme("nightfox")

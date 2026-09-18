@@ -76,9 +76,128 @@ km.set("n", "<leader>ta", "<Plug>(TasksArchiveTasks)") -- archive a task.
 km.set("n", "<leader>tb", "<Plug>(TasksBeginTask)") -- mark progress of a task.
 
 km.set("n", "<leader>vt", ":put=strftime('# %d.%m.%Y TASKS:')<CR>")
+-- ====================================================================
+-- ADVANCED TIME-TRACKING TASK MANAGEMENT
+-- ====================================================================
 
-km.set("n", "<leader>btd", ":.put=strftime('@done(%Y-%m-%d %H:%M:%S)')<CR>kJ")
-km.set("n", "<leader>btp", ":.put=strftime('@wip(%Y-%m-%d %H:%M:%S)')<CR>kJ")
+-- 1. START / RESUME TASK (Work in Progress)
+km.set("n", "<leader>btp", function()
+	local line = vim.api.nvim_get_current_line()
+
+	-- Change square icon (☐) to double chevron (») if not already active
+	if line:match("☐") then
+		line = line:gsub("☐", "»", 1)
+		vim.api.nvim_set_current_line(line)
+	end
+
+	-- Create a next line with @start(<date>)
+	local date_str = vim.fn.strftime("%Y-%m-%d %H:%M")
+	local current_row = vim.api.nvim_win_get_cursor(0)[1]
+
+	vim.api.nvim_buf_set_lines(0, current_row, current_row, false, { "    @start(" .. date_str .. ")" })
+end, { desc = "Task: Start/Resume WIP" })
+
+-- 2. PAUSE TASK (Suspend and save intermediate time)
+km.set("n", "<leader>bts", function()
+	local line = vim.api.nvim_get_current_line()
+
+	-- Only pause if it's currently active
+	if line:match("»") then
+		line = line:gsub("»", "☐", 1)
+	else
+		vim.notify("Task is not currently running!", vim.log.levels.WARN)
+		return
+	end
+
+	local current_row = vim.api.nvim_win_get_cursor(0)[1]
+	local total_lines = vim.api.nvim_buf_line_count(0)
+
+	if current_row < total_lines then
+		local next_line = vim.api.nvim_buf_get_lines(0, current_row, current_row + 1, false)[1]
+		local start_str = next_line:match("@start%((%d%d%d%d%-%d%d%-%d%d %d%d:%d%d)%)")
+
+		if start_str then
+			-- Calculate current session minutes
+			local year, month, day, hour, min = start_str:match("(%d+)-(%d+)-(%d+) (%d+):(%d+)")
+			local start_time = os.time({
+				year = tonumber(year),
+				month = tonumber(month),
+				day = tonumber(day),
+				hour = tonumber(hour),
+				min = tonumber(min),
+			})
+			local diff_mins = math.floor(os.difftime(os.time(), start_time) / 60)
+
+			-- Look for existing accumulated time to add up
+			local existing_h, existing_m = line:match("@worked%((%d+)h(%d+)min%)")
+			if existing_h and existing_m then
+				diff_mins = diff_mins + (tonumber(existing_h) * 60) + tonumber(existing_m)
+				line = line:gsub("%s*@worked%([0-9hmin]+%)", "") -- strip old tag
+			end
+
+			-- Append updated tracking
+			local hours = math.floor(diff_mins / 60)
+			local mins = diff_mins % 60
+			line = line .. string.format(" @worked(%dh%dmin)", hours, mins)
+
+			-- Remove the @start helper line
+			vim.api.nvim_buf_set_lines(0, current_row, current_row + 1, false, {})
+		end
+	end
+
+	vim.api.nvim_set_current_line(line)
+end, { desc = "Task: Pause active session" })
+
+-- 3. COMPLETE TASK (Mark Done & close out all accumulated time)
+km.set("n", "<leader>btd", function()
+	local line = vim.api.nvim_get_current_line()
+
+	-- Change icon to checkmark
+	line = line:gsub("☐", "✔", 1):gsub("»", "✔", 1)
+
+	local current_row = vim.api.nvim_win_get_cursor(0)[1]
+	local total_lines = vim.api.nvim_buf_line_count(0)
+	local diff_mins = 0
+	local has_active_session = false
+
+	-- Grab final session time if it was running when completed
+	if current_row < total_lines then
+		local next_line = vim.api.nvim_buf_get_lines(0, current_row, current_row + 1, false)[1]
+		local start_str = next_line:match("@start%((%d%d%d%d%-%d%d%-%d%d %d%d:%d%d)%)")
+
+		if start_str then
+			has_active_session = true
+			local year, month, day, hour, min = start_str:match("(%d+)-(%d+)-(%d+) (%d+):(%d+)")
+			local start_time = os.time({
+				year = tonumber(year),
+				month = tonumber(month),
+				day = tonumber(day),
+				hour = tonumber(hour),
+				min = tonumber(min),
+			})
+			diff_mins = math.floor(os.difftime(os.time(), start_time) / 60)
+			vim.api.nvim_buf_set_lines(0, current_row, current_row + 1, false, {})
+		end
+	end
+
+	-- Accumulate any past paused history
+	local existing_h, existing_m = line:match("@worked%((%d+)h(%d+)min%)")
+	if existing_h and existing_m then
+		diff_mins = diff_mins + (tonumber(existing_h) * 60) + tonumber(existing_m)
+		line = line:gsub("%s*@worked%([0-9hmin]+%)", "")
+	end
+
+	local worked_str = ""
+	if has_active_session or (existing_h and existing_m) then
+		local hours = math.floor(diff_mins / 60)
+		local mins = diff_mins % 60
+		worked_str = string.format(" @worked(%dh%dmin)", hours, mins)
+	end
+
+	local date_str = vim.fn.strftime("%Y-%m-%d %H:%M")
+	line = line .. "  @done(" .. date_str .. ")" .. worked_str
+	vim.api.nvim_set_current_line(line)
+end, { desc = "Task: Complete and close tracking" })
 
 -- Expand snippet
 km.set("i", "<C-j>", "<Plug>luasnip-expand-or-jump")
