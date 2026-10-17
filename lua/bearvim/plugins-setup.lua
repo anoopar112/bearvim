@@ -135,6 +135,16 @@ require("lazy").setup({
 	-- utilities
 	"lukas-reineke/indent-blankline.nvim",
 	"vimwiki/vimwiki",
+	{
+		dir = "~/Documents/vimwiki-render.nvim",
+		name = "vimwiki-render.nvim",
+		dependencies = { "vimwiki/vimwiki" },
+		ft = { "markdown", "vimwiki" },
+		opts = {
+			wiki_path = "~/Documents/vimwiki",
+			auto_compile = true,
+		},
+	},
 	"tomasky/bookmarks.nvim",
 	"anoopar112/vim-tasks",
 	"NvChad/nvim-colorizer.lua",
