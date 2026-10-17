@@ -64,8 +64,9 @@ km.set("n", "<leader>bn", ":bn<CR>")
 km.set("n", "<leader>bp", ":bp<CR>")
 
 km.set("n", "<leader>nh", ":noh<CR>")
--- octodown preview
-km.set("n", "<leader>mp", ":AsyncRun octodown --style=github -l %<CR>")
+-- markdown preview keymaps
+km.set("n", "<leader>mp", ":MarkdownPreviewToggle<CR>", { desc = "Toggle Markdown Browser Preview" })
+km.set("n", "<leader>mr", ":RenderMarkdown toggle<CR>", { desc = "Toggle In-Buffer Markdown Rendering" })
 -- tasks keybindings
 km.set("n", "<leader>tt", "<Plug>(TasksToggleTask)") -- toggle tasks
 km.set("n", "<leader>tr", "<Plug>(TasksToggleAndClearTask)") -- remove task

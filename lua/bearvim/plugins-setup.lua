@@ -98,7 +98,6 @@ require("lazy").setup({
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		},
 	},
-
 	-- managing & installing lsp servers, linters & formatters
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
@@ -140,36 +139,23 @@ require("lazy").setup({
 	"anoopar112/vim-tasks",
 	"NvChad/nvim-colorizer.lua",
 	"skywind3000/asyncrun.vim", -- for mac
-
-	-- markdown preview
+	-- Markdown Preview in browser (with live sync, Katex, Mermaid)
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = "cd app && yarn install",
+		build = "cd app && npm install",
 		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
+			vim.g.mkdp_filetypes = { "markdown", "vimwiki", "tasks" }
 		end,
-		ft = { "markdown" },
+		ft = { "markdown", "vimwiki", "tasks" },
 	},
+	-- In-buffer rich markdown rendering (headings, tables, callouts, checkboxes, codeblocks)
 	{
-		"OXY2DEV/markview.nvim",
-		lazy = false,
+		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
 		},
-		config = function()
-			require("markview").setup({
-				modes = { "n", "no", "c" },
-				hybrid_modes = { "n" },
-				callbacks = {
-					on_enable = function(_, win)
-						vim.wo[win].conceallevel = 2
-						vim.wo[win].concealcursor = "c"
-					end,
-				},
-			})
-		end,
 	},
 	"lervag/vimtex",
 
@@ -212,6 +198,7 @@ require("lazy").setup({
 				html = { "prettierd", "prettier" },
 				yaml = { "prettierd", "prettier" },
 				json = { "prettierd", "prettier" },
+				markdown = { "prettier" },
 			},
 			format_after_save = {
 				lsp_fallback = true,
